@@ -163,6 +163,7 @@
             <p>De plus j'ai un esprit d'équipe qui fait que la bonne humeur est pour moi un indispensable.</p>
         </div>
     </div>
+    <!--#endregion -->
 
 <!--#region Projets-->
     <div class="flex">
@@ -245,6 +246,8 @@
         </div>
     </div>
     <!--#endregion -->
+
+
 
     <!--#region Défilement js  -->
     <script>
