@@ -31,9 +31,9 @@
             <img src="https://ludovicspina.fr/images/lena/LOGO.png" class="h-8" alt="Logo">
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <a href="mailto:lena.gonzalezbreton@proton.me" type="button"
-                    class="text-white bg-[#E94D29] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#E94D29] dark:hover:bg-[#E94D29] dark:focus:ring-[#E94D29]">
-                Contact
+            <a href="filesToDownload/Cv_lenagonzalezbreton.pdf" download
+               class="text-white bg-[#E94D29] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-[#E94D29] dark:hover:bg-[#E94D29] dark:focus:ring-[#E94D29]">
+                Télécharger mon CV
             </a>
             <button data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -74,7 +74,7 @@
 
 <!--#region Bouton bounce  -->
 <a href="#accueil"
-   class="fixed bottom-5 right-5 rounded-full border border-2 border-white p-2 animate-bounce bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-30 dark:border-black">
+   class="fixed bottom-5 right-5 rounded-full border border-2 border-white p-2 animate-bounce bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-20 dark:border-orange-800">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#E8632A"
          class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"/>
@@ -84,14 +84,21 @@
 
 <!--#region Accueil -->
 
-<div id="accueil" class="h-screen flex flex-col justify-center ml-10">
-    <div class="text-9xl lg:text-6xl font bold dark:text-[#D7D6DA]">Gonzalez Breton Léna</div>
+<div id="accueil" class="h-screen flex ml-16 items-center ml-10">
     <div class="flex">
-        <div
-            class="text-6xl lg:text-4xl font bold bg-clip-text text-transparent bg-gradient-to-r from-[#E94D29] to-[#FFB8EF] flex">
-            Fullstack IT Student
+        <div>
+            <img class="w-32" src="images/moi3D.png">
         </div>
+        <div class="flex flex-col justify-center">
+            <div class="text-9xl lg:text-6xl font-bold dark:text-[#D7D6DA]">Gonzalez Breton Léna</div>
+            <div
+                class="text-6xl lg:text-4xl font bold bg-clip-text text-transparent bg-gradient-to-r from-[#E94D29] to-[#FFB8EF] flex">
+                Fullstack IT Student
+            </div>
+        </div>
+
     </div>
+
 </div>
 <!--#endregion -->
 
@@ -326,24 +333,32 @@
         <div class="text-7xl lg:text-4xl font-semibold ml-4 dark:text-[#D7D6DA]">Hard skills</div>
     </div>
     <div class="flex gap-4 h-16">
-        <img data-tooltip-target="tooltip-c#" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"/>
+        <img data-tooltip-target="tooltip-c#"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"/>
 
-        <img data-tooltip-target="tooltip-laravel" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"/>
+        <img data-tooltip-target="tooltip-laravel"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"/>
 
         <img data-tooltip-target="tooltip-sql"
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"/>
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"/>
 
-        <img data-tooltip-target="tooltip-tailwind" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"/>
+        <img data-tooltip-target="tooltip-tailwind"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"/>
 
-        <img data-tooltip-target="tooltip-vb" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualbasic/visualbasic-original.svg"/>
+        <img data-tooltip-target="tooltip-vb"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualbasic/visualbasic-original.svg"/>
 
-        <img data-tooltip-target="tooltip-html" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/>
+        <img data-tooltip-target="tooltip-html"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/>
 
-        <img data-tooltip-target="tooltip-css" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
+        <img data-tooltip-target="tooltip-css"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
 
-        <img data-tooltip-target="tooltip-js" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/>
+        <img data-tooltip-target="tooltip-js"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/>
 
-        <img data-tooltip-target="tooltip-php" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"/>
+        <img data-tooltip-target="tooltip-php"
+             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"/>
     </div>
     <!--#region tooltips -->
     <div id="tooltip-c#" role="tooltip"
