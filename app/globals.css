@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────
+   Thème de base (clair) – variables runtime
+────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Fond & texte globaux (ceux que tu avais) */
+    --background: #ffffff;
+    --foreground: #171717;
+
+    /* Palette marque */
+    --primary:  #361147; /* prune chic */
+    --accent:   #B388EB; /* lavande */
+    --sand:     #F6F4F2; /* fond doux */
+    --ink:      #0F0E12; /* texte "noir chic" */
+    --muted:    #E8E2EE; /* surfaces / bordures */
+
+    /* Versions RGB (pour les opacités en glassmorphisme) */
+    --sand-rgb:   246 244 242;
+    --ink-rgb:    15 14 18;
+    --accent-rgb: 179 136 235;
+    --primary-rgb: 54 17 71;
+
+    /* Rayons & ombres */
+    --radius-xl: 1rem;
+    --radius-2xl: 1.25rem;
+    --shadow-soft: 0 6px 24px rgba(0,0,0,.08);
+    --shadow-hover: 0 10px 30px rgba(0,0,0,.10);
+
+    /* Typos (mappées à ce que tu utilises dans layout.tsx)
+       Garde Geist si tu veux, sinon remplace par tes vars Clash/Satoshi */
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* ─────────────────────────────────────────
+   Dark mode via préférences système
+────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+
+        /* Palette ajustée sombre */
+        --sand:   #171717;
+        --ink:    #F6F4F2;
+        --muted:  #2A2A2A;
+        --primary:  #B388EB;  /* on inverse le jeu : lavande + visible */
+        --accent:   #E2C4FF;
+
+        --sand-rgb:   23 23 23;
+        --ink-rgb:    246 244 242;
+        --accent-rgb: 226 196 255;
+        --primary-rgb: 179 136 235;
+    }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────
+   Tailwind v4 tokens (configless)
+────────────────────────────────────────── */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-primary: var(--primary);
+    --color-accent: var(--accent);
+    --color-sand: var(--sand);
+    --color-ink: var(--ink);
+    --color-muted: var(--muted);
+
+    --radius-xl: var(--radius-xl);
+    --radius-2xl: var(--radius-2xl);
+    --shadow-soft: var(--shadow-soft);
+    --shadow-hover: var(--shadow-hover);
+
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+}
+
+/* ─────────────────────────────────────────
+   Base globale
+────────────────────────────────────────── */
+@layer base {
+    html { scroll-behavior: smooth; }
+
+    body {
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Titres élégants */
+    h1, h2, h3, .heading {
+        letter-spacing: -0.01em;
+        color: var(--ink);
+    }
+    h1 { @apply text-4xl md:text-5xl; }
+    h2 { @apply text-3xl md:text-4xl; }
+    h3 { @apply text-2xl md:text-3xl; }
+
+    a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-color: color-mix(in oklab, var(--accent) 40%, transparent);
+        transition: color .2s ease, text-decoration-color .2s ease;
+    }
+    a:hover {
+        text-decoration-color: var(--accent);
+    }
+
+    ::selection {
+        background: color-mix(in oklab, var(--accent) 30%, transparent);
+        color: var(--ink);
+    }
+}
+
+/* ─────────────────────────────────────────
+   Utilitaires maison (réutilisables partout)
+────────────────────────────────────────── */
+@layer utilities {
+    /* Conteneur propre (si tu ne veux pas répéter 3 classes) */
+    .container-clean {
+        @apply container mx-auto max-w-5xl px-6;
+    }
+
+    /* Glassmorphisme neutre (suit le thème) */
+    .glass {
+        background-color: rgb(var(--sand-rgb) / 0.55);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgb(var(--ink-rgb) / 0.06);
+        box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
+    }
+
+    /* Carte douce */
+    .card {
+        @apply rounded-2xl p-6;
+        background: var(--sand);
+        color: var(--ink);
+        box-shadow: var(--shadow-soft);
+        border: 1px solid color-mix(in oklab, var(--muted) 60%, transparent);
+    }
+
+    /* Bouton primaire & variante "ghost" */
+    .btn {
+        @apply inline-flex items-center justify-center rounded-2xl px-5 py-2.5 font-medium transition;
+        background: var(--primary);
+        color: white;
+        box-shadow: var(--shadow-soft);
+    }
+    .btn:hover { box-shadow: var(--shadow-hover); }
+    .btn-ghost {
+        @apply inline-flex items-center justify-center rounded-2xl px-5 py-2.5 font-medium transition;
+        background: rgb(var(--sand-rgb) / 0.6);
+        color: var(--ink);
+        border: 1px solid rgb(var(--ink-rgb) / 0.08);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Badge / pill */
+    .badge {
+        @apply inline-flex items-center rounded-xl px-3 py-1 text-sm;
+        background: color-mix(in oklab, var(--accent) 16%, transparent);
+        color: var(--ink);
+        border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+    }
+
+    /* Bordure dégradée subtile (utile sous la navbar) */
+    .border-glow {
+        position: relative;
+    }
+    .border-glow::before {
+        content: "";
+        position: absolute; inset: 0; border-radius: inherit;
+        background: linear-gradient(90deg,
+        color-mix(in oklab, var(--accent) 30%, transparent),
+        transparent 60%);
+        filter: blur(16px);
+        z-index: -1;
+    }
 }
