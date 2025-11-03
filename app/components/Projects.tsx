@@ -57,7 +57,7 @@ const projects: Project[] = [
         tech: ["Next.js", "Typescript", "TailwindCSS","Framer Motion","Hébergement maison sur serveur"],
         features: ["Listing de projets", "About me section", "Hero 3D", "Contact","Experiences et formations"],
         repo: "https://github.com/LenaGonzalezBreton/Portfolio",
-        badge: "Privé",
+        badge: "Open-source",
     },
 ];
 

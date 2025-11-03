@@ -9,8 +9,8 @@
     --foreground: #171717;
 
     /* Palette marque */
-    --primary:  #361147; /* prune chic */
-    --accent:   #B388EB; /* lavande */
+    --primary:  #67290A; /* prune chic */
+    --accent:   #DC4D01; /* lavande */
     --sand:     #F6F4F2; /* fond doux */
     --ink:      #0F0E12; /* texte "noir chic" */
     --muted:    #E8E2EE; /* surfaces / bordures */
@@ -45,8 +45,8 @@
         --sand:   #171717;
         --ink:    #F6F4F2;
         --muted:  #2A2A2A;
-        --primary:  #B388EB;  /* on inverse le jeu : lavande + visible */
-        --accent:   #E2C4FF;
+        --primary:  #67290A;  /* on inverse le jeu : lavande + visible */
+        --accent:   #DC4D01;
 
         --sand-rgb:   23 23 23;
         --ink-rgb:    246 244 242;
