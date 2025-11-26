@@ -212,4 +212,43 @@ body {
         filter: blur(16px);
         z-index: -1;
     }
+
+    /* ─────────────────────────────────────────
+       Chrome / Metallic Accents
+    ────────────────────────────────────────── */
+    .text-chrome {
+        background: linear-gradient(to bottom,
+                #ffffff 0%,
+                #a5a5a5 50%,
+                #ffffff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .bg-chrome {
+        background: linear-gradient(135deg,
+                #e0e0e0 0%,
+                #ffffff 45%,
+                #a0a0a0 55%,
+                #e0e0e0 100%);
+        background-size: 200% 200%;
+        transition: background-position 0.5s ease;
+        color: #171717;
+        /* Dark text for contrast on chrome */
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .bg-chrome:hover {
+        background-position: 100% 100%;
+    }
+
+    .border-chrome {
+        position: relative;
+        border: 1px solid transparent;
+        background:
+            linear-gradient(var(--sand), var(--sand)) padding-box,
+            linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #ffffff 100%) border-box;
+    }
 }

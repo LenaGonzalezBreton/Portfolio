@@ -148,7 +148,7 @@ export default function Navbar() {
                                     className="
                                         hidden md:inline-flex items-center justify-center
                                         rounded-full px-5 py-2
-                                        bg-ink text-sand font-medium text-sm
+                                        bg-chrome text-ink font-medium text-sm
                                         shadow-soft hover:shadow-hover
                                         transition-all hover:-translate-y-0.5
                                     "
@@ -197,7 +197,7 @@ export default function Navbar() {
                                         className="
                                             flex items-center justify-center
                                             rounded-xl px-5 py-3
-                                            bg-ink text-sand font-medium text-sm
+                                            bg-chrome text-ink font-medium text-sm
                                             shadow-soft
                                         "
                                     >

@@ -127,7 +127,7 @@ export default function AboutMe() {
                                     bg-muted
                                 ">
                                     <img
-                                        src="/portrait.jpg"
+                                        src="/portrait2.jpg"
                                         alt="Léna GB"
                                         className="w-full h-full object-cover"
                                         onError={(e) => {

@@ -39,7 +39,7 @@ export default function Hero() {
                         {/* Title */}
                         <motion.h1
                             {...fadeUp(0.2)}
-                            className="text-4xl md:text-6xl lg:text-7xl font-bold text-ink tracking-tight leading-[0.95] mb-2"
+                            className="text-4xl md:text-6xl lg:text-7xl font-bold text-chrome tracking-tight leading-[0.95] mb-2"
                         >
                             {t.hero.title}
                         </motion.h1>
