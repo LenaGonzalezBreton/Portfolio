@@ -19,7 +19,7 @@ const experiencesData: Record<Language, Experience[]> = {
     fr: [
         {
             id: "tizzy-alt",
-            title: "Alternante développeuse fullstack (UI/UX)",
+            title: "Alternante développeuse mobile (UI/UX)",
             company: "Tizzy",
             contract: "Alternance",
             start: "2024-09",
@@ -77,7 +77,7 @@ const experiencesData: Record<Language, Experience[]> = {
     en: [
         {
             id: "tizzy-alt",
-            title: "Fullstack Developer Apprentice (UI/UX)",
+            title: "Mobile Developer Apprentice (UI/UX)",
             company: "Tizzy",
             contract: "Apprenticeship",
             start: "2024-09",

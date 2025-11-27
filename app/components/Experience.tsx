@@ -77,23 +77,6 @@ export default function ExperienceTimeline() {
                                             </li>
                                         ))}
                                     </ul>
-
-                                    {/* Liens */}
-                                    {exp.links?.length ? (
-                                        <div className="mt-5 flex flex-wrap gap-3">
-                                            {exp.links.map((l) => (
-                                                <a
-                                                    key={l.url}
-                                                    href={l.url}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="btn-ghost text-sm"
-                                                >
-                                                    {l.label}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    ) : null}
                                 </Card>
                             </motion.li>
                         ))}

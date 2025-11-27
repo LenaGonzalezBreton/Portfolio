@@ -47,11 +47,12 @@ export default function Contact() {
         languages: { title: string; items: Language[] };
         contact: ContactInfo[];
         socials: SocialLink[];
+        socialsTitle: string;
     }> = {
         fr: {
             title: "Travaillons ensemble",
-            subtitle: "Disponible pour alternance ou freelance. Discutons de votre projet !",
-            cta: "Réserver un appel",
+            subtitle: "Disponible pour de nouvelles opportunités. Discutons de votre projet !",
+            cta: "Contactez moi !",
             availability: "Disponible immédiatement",
             languages: {
                 title: "Langues",
@@ -91,19 +92,14 @@ export default function Contact() {
                     url: SOCIAL_LINKS.github,
                     icon: <Github className="w-5 h-5" />,
                     color: "from-gray-700 to-gray-900",
-                },
-                {
-                    name: "Epitech",
-                    url: SOCIAL_LINKS.epitech,
-                    icon: <GraduationCap className="w-5 h-5" />,
-                    color: "from-purple-500 to-purple-600",
-                },
+                }
             ],
+            socialsTitle: "Réseaux",
         },
         en: {
             title: "Let's work together",
-            subtitle: "Available for apprenticeship, freelance, or full-time. Let's discuss your project!",
-            cta: "Book a call",
+            subtitle: "Available for new opportunities. Let's discuss your project!",
+            cta: "Meet me !",
             availability: "Available immediately",
             languages: {
                 title: "Languages",
@@ -123,7 +119,7 @@ export default function Contact() {
                 {
                     icon: <MapPin className="w-5 h-5" />,
                     label: "Location",
-                    value: "Nancy, France",
+                    value: "Epinal | Nancy, France",
                 },
                 {
                     icon: <Briefcase className="w-5 h-5" />,
@@ -144,25 +140,20 @@ export default function Contact() {
                     icon: <Github className="w-5 h-5" />,
                     color: "from-gray-700 to-gray-900",
                 },
-                {
-                    name: "Epitech",
-                    url: SOCIAL_LINKS.epitech,
-                    icon: <GraduationCap className="w-5 h-5" />,
-                    color: "from-purple-500 to-purple-600",
-                },
             ],
+            socialsTitle: "Socials",
         },
     };
 
     const data = contactData[language];
 
     return (
-        <section id="contact" className="py-24 px-4 md:px-6 relative overflow-hidden">
+        <section id="contact" className="py-12 md:py-24 px-4 md:px-6 relative overflow-hidden">
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 -z-10" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl -z-10" />
 
-            <div className="container-clean">
+            <div className="w-full max-w-5xl mx-auto">
                 {/* Header */}
                 <motion.div {...fadeUp(0)} className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="heading mb-4">{data.title}</h2>
@@ -181,7 +172,7 @@ export default function Contact() {
                 </motion.div>
 
                 {/* Main Content Grid */}
-                <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
                     {/* Left Column - Contact Info */}
                     <motion.div {...fadeUp(0.1)} className="space-y-6">
                         {/* Contact Details */}
@@ -225,7 +216,7 @@ export default function Contact() {
                     <motion.div {...fadeUp(0.2)} className="space-y-6">
                         {/* Social Links */}
                         <Card className="p-6">
-                            <h3 className="heading text-xl mb-6">Réseaux</h3>
+                            <h3 className="heading text-xl mb-6">{data.socialsTitle}</h3>
                             <div className="space-y-3">
                                 {data.socials.map((social) => (
                                     <a
@@ -260,8 +251,8 @@ export default function Contact() {
                         </Card>
 
                         {/* CTA Card */}
-                        <Card className="p-8 bg-gradient-to-br from-primary to-accent text-white border-0">
-                            <h3 className="text-2xl font-bold mb-3">
+                        <Card className="p-6 md:p-8 bg-gradient-to-br from-primary to-accent border-0">
+                            <h3 className="text-2xl font-bold mb-3  text-white">
                                 {language === "fr" ? "Un projet en tête ?" : "Have a project in mind?"}
                             </h3>
                             <p className="text-white/90 mb-6">
@@ -291,4 +282,3 @@ export default function Contact() {
         </section>
     );
 }
-

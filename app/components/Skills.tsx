@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { categories, skills, type SkillCategory, type Skill } from "@/app/data/skills";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -10,7 +10,9 @@ import { fadeUp } from "@/app/lib/animations";
 
 export default function SkillsSection() {
     const { t } = useLanguage();
+    const sectionRef = useRef<HTMLElement>(null);
     const [active, setActive] = useState<Set<SkillCategory>>(new Set()); // vide = tout
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const toggle = (c: SkillCategory) =>
         setActive(prev => {
@@ -26,6 +28,11 @@ export default function SkillsSection() {
         return skills.filter(s => active.has(s.category));
     }, [active]);
 
+    const displayedSkills = useMemo(() => {
+        if (isExpanded) return filtered;
+        return filtered.slice(0, 6);
+    }, [filtered, isExpanded]);
+
     const counts = useMemo(() => {
         const map: Record<SkillCategory, number> = { Frontend: 0, Backend: 0, DevOps: 0, Database: 0, Outils: 0 };
         skills.forEach(s => (map[s.category] += 1));
@@ -33,7 +40,7 @@ export default function SkillsSection() {
     }, []);
 
     return (
-        <section id="skills" className="py-24">
+        <section id="skills" className="py-24" ref={sectionRef}>
             <div className="container-clean">
                 <motion.div {...fadeUp(0)} className="mb-8">
                     <h2 className="heading mb-2">{t.skills.title}</h2>
@@ -77,7 +84,7 @@ export default function SkillsSection() {
                 {/* Grille des skills */}
                 <motion.div layout className="grid gap-4 md:gap-6 md:grid-cols-2">
                     <AnimatePresence initial={false} mode="popLayout">
-                        {filtered.map((s, i) => (
+                        {displayedSkills.map((s, i) => (
                             <motion.div
                                 key={`${s.category}-${s.name}`}
                                 layout
@@ -121,6 +128,41 @@ export default function SkillsSection() {
                         ))}
                     </AnimatePresence>
                 </motion.div>
+
+                {/* Bouton Voir plus / Voir moins */}
+                {filtered.length > 6 && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex justify-center mt-8"
+                    >
+                        <button
+                            onClick={() => {
+                                if (isExpanded) {
+                                    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+                                }
+                                setIsExpanded(!isExpanded);
+                            }}
+                            className="
+                                group flex items-center gap-2 px-6 py-3 rounded-full
+                                bg-ink/5 hover:bg-ink/10 text-ink font-medium
+                                transition-all duration-300
+                            "
+                        >
+                            {isExpanded ? (
+                                <>
+                                    Voir moins
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-y-1 transition-transform"><path d="m18 15-6-6-6 6" /></svg>
+                                </>
+                            ) : (
+                                <>
+                                    Voir plus ({filtered.length - 6} restants)
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-y-1 transition-transform"><path d="m6 9 6 6 6-6" /></svg>
+                                </>
+                            )}
+                        </button>
+                    </motion.div>
+                )}
             </div>
         </section>
     );

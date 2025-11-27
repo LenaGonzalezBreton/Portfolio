@@ -39,6 +39,7 @@ export interface Interest {
     title: string;
     description: string;
     color: string;
+    hoverColor?: string;
 }
 
 export interface SoftSkill {

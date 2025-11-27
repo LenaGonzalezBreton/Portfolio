@@ -70,7 +70,7 @@ interface Translations {
 const translations: Record<Language, Translations> = {
     fr: {
         navbar: {
-            bookCall: "Réserver un appel",
+            bookCall: "Me contacter",
         },
         hero: {
             badge: "RECHERCHE ALTERNANCE",
@@ -95,14 +95,14 @@ const translations: Record<Language, Translations> = {
         },
         skills: {
             title: "Hard Skills",
-            subtitle: "Filtre par domaine. Douceur visuelle, efficacité mentale. Tu connais. ✨",
+            subtitle: "Mes compétences techniques et outils de prédilection.",
             all: "Tout",
             year: "an",
             years: "ans",
         },
         experience: {
             title: "Expériences",
-            subtitle: "Une sélection des missions et postes qui m'ont le plus construite — discipline sans rigidité, always.",
+            subtitle: "Une sélection de mes aventures.",
             today: "Aujourd'hui",
         },
         contact: {
@@ -132,7 +132,7 @@ const translations: Record<Language, Translations> = {
     },
     en: {
         navbar: {
-            bookCall: "Book a call",
+            bookCall: "Contact me",
         },
         hero: {
             badge: "LOOKING FOR APPRENTICESHIP",
@@ -157,14 +157,14 @@ const translations: Record<Language, Translations> = {
         },
         skills: {
             title: "Hard Skills",
-            subtitle: "Filter by domain. Visual smoothness, mental efficiency. You know. ✨",
+            subtitle: "My technical skills and preferred tools.",
             all: "All",
             year: "year",
             years: "years",
         },
         experience: {
             title: "Experience",
-            subtitle: "A selection of missions and positions that shaped me the most — discipline without rigidity, always.",
+            subtitle: "A selection of my adventures.",
             today: "Today",
         },
         contact: {

@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/app/context/ThemeContext";
 
 export const metadata: Metadata = {
     title: "Portfolio",
-    description: "Élégance tranquille + motion."
+    description: "Portfolio de Léna Gonzalez Breton - Développeuse Fullstack & UI/UX Designer."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
