@@ -12,7 +12,7 @@ const projectsData: Record<Language, Project[]> = {
         },
         {
             title: "FluCast - Hackaton (48h)",
-            description: "Idéation de projet lors d'un Hackaton pour la présidence de la république. Création d'un outil pour optimiser la gestion de la crise de la grippe.",
+            description: "Idéation de projet lors d'un Hackaton. Création d'un outil pour optimiser la gestion de la crise de la grippe.",
             tech: ["Python/Streamlit", "Prophet"],
             features: ["Cartes régionales et nationales", "Prévisions tension grippale s+1", "Data analyse", "Prophet entrainé sur plusieurs dataset", "Précision des résultats"],
             repo: "https://github.com/LenaGonzalezBreton/FluCast",
@@ -66,7 +66,7 @@ const projectsData: Record<Language, Project[]> = {
         },
         {
             title: "FluCast - Hackathon (48h)",
-            description: "Project ideation during a Hackathon for the French presidency. Creation of a tool to optimize flu crisis management.",
+            description: "Project ideation during a Hackathon. Creation of a tool to optimize flu crisis management.",
             tech: ["Python/Streamlit", "Prophet"],
             features: ["Regional and national maps", "Flu tension forecasts s+1", "Data analysis", "Prophet trained on multiple datasets", "Result accuracy"],
             repo: "https://github.com/LenaGonzalezBreton/FluCast",
