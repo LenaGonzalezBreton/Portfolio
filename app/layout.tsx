@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { clashDisplay, satoshi } from "./fonts";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <LanguageProvider>
                         <Navbar />
                         {children}
+                        <Analytics />
                         <Footer />
                     </LanguageProvider>
                 </ThemeProvider>
