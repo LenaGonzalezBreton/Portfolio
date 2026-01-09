@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+
+
 import { motion } from "framer-motion";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { fadeUp } from "@/app/lib/animations";
@@ -32,7 +35,7 @@ export default function Hero() {
                             {...fadeUp(0.1)}
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[color-mix(in_oklab,var(--accent)_15%,transparent)] border border-[color-mix(in_oklab,var(--accent)_20%,transparent)] mb-6"
                         >
-                            <img src="/emojis/sparkles.png" alt="Sparkles" className="w-4 h-4" />
+                            <Image src="/emojis/sparkles.png" alt="Sparkles" width={16} height={16} className="w-4 h-4" />
                             <span className="text-xs font-bold tracking-wide text-accent uppercase">{t.hero.badge}</span>
                         </motion.div>
 
@@ -98,18 +101,13 @@ export default function Hero() {
                                 "
                             >
                                 {/* Image with fallback */}
-                                <img
+                                <Image
                                     src="/portrait.jpg"
                                     alt="Portrait"
-                                    className="w-full h-full object-cover"
-                                    onError={(e) => {
-                                        e.currentTarget.style.display = 'none';
-                                        e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center');
-                                        const span = document.createElement('span');
-                                        span.textContent = 'Portrait';
-                                        span.className = 'text-ink/20 font-bold text-xl';
-                                        e.currentTarget.parentElement?.appendChild(span);
-                                    }}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                    sizes="(max-width: 768px) 256px, 288px"
                                 />
                             </motion.div>
 
@@ -130,7 +128,7 @@ export default function Hero() {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-8 h-8 rounded-full bg-sand flex items-center justify-center">
-                                        <img src="/emojis/rocket.png" alt="Rocket" className="w-5 h-5" />
+                                        <Image src="/emojis/rocket.png" alt="Rocket" width={20} height={20} className="w-5 h-5" />
                                     </div>
                                     <div className="flex flex-col">
                                         <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">{t.hero.role}</span>
