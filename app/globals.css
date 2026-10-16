@@ -1,264 +1,98 @@
 @import "tailwindcss";
 
-/* ─────────────────────────────────────────
-   Thème de base (clair) – variables runtime
-────────────────────────────────────────── */
+/* Tokens — light (default) */
 :root {
-    /* Fond & texte globaux (ceux que tu avais) */
     --background: #ffffff;
-    --foreground: #171717;
-
-    /* Palette marque */
-    --primary: #67290A;
-    /* prune chic */
-    --accent: #DC4D01;
-    /* lavande */
-    --sand: #F6F4F2;
-    /* fond doux */
-    --ink: #0F0E12;
-    /* texte "noir chic" */
-    --muted: #E8E2EE;
-    /* surfaces / bordures */
-
-    /* Versions RGB (pour les opacités en glassmorphisme) */
-    --sand-rgb: 246 244 242;
-    --ink-rgb: 15 14 18;
-    --accent-rgb: 179 136 235;
-    --primary-rgb: 54 17 71;
-
-    /* Rayons & ombres */
-    --radius-xl: 1rem;
-    --radius-2xl: 1.25rem;
-    --shadow-soft: 0 6px 24px rgba(0, 0, 0, .08);
-    --shadow-hover: 0 10px 30px rgba(0, 0, 0, .10);
-
-    /* Typos (mappées à ce que tu utilises dans layout.tsx)
-       Garde Geist si tu veux, sinon remplace par tes vars Clash/Satoshi */
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    --surface: #f5f5f7;
+    --foreground: #1d1d1f;
+    --muted-foreground: #6e6e73;
+    --border: #86868b;
+    --accent: #0066cc;
+    --on-accent: #ffffff;
 }
 
-/* Force Apple Color Emoji for all emojis */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-}
-
-/* ─────────────────────────────────────────
-   Dark mode via data-theme attribute
-────────────────────────────────────────── */
+/* Tokens — dark */
 [data-theme="dark"] {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-
-    /* Palette ajustée sombre */
-    --sand: #171717;
-    --ink: #F6F4F2;
-    --muted: #2A2A2A;
-    --primary: #67290A;
-    /* on inverse le jeu : lavande + visible */
-    --accent: #DC4D01;
-
-    --sand-rgb: 23 23 23;
-    --ink-rgb: 246 244 242;
-    --accent-rgb: 226 196 255;
-    --primary-rgb: 179 136 235;
+    --background: #000000;
+    --surface: #1c1c1e;
+    --foreground: #f5f5f7;
+    --muted-foreground: #a1a1a6;
+    --border: #6e6e73;
+    --accent: #2997ff;
+    --on-accent: #000000;
 }
 
-/* ─────────────────────────────────────────
-   Tailwind v4 tokens (configless)
-────────────────────────────────────────── */
 @theme inline {
     --color-background: var(--background);
+    --color-surface: var(--surface);
     --color-foreground: var(--foreground);
-
-    --color-primary: var(--primary);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-border: var(--border);
     --color-accent: var(--accent);
-    --color-sand: var(--sand);
-    --color-ink: var(--ink);
-    --color-muted: var(--muted);
-
-    --radius-xl: var(--radius-xl);
-    --radius-2xl: var(--radius-2xl);
-    --shadow-soft: var(--shadow-soft);
-    --shadow-hover: var(--shadow-hover);
-
-    --font-sans: var(--font-sans);
-    --font-mono: var(--font-mono);
+    --color-on-accent: var(--on-accent);
+    --font-sans: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 }
 
-/* ─────────────────────────────────────────
-   Base globale
-────────────────────────────────────────── */
-@layer base {
+html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: no-preference) {
     html {
         scroll-behavior: smooth;
     }
+}
 
-    body {
-        background: var(--background);
-        color: var(--foreground);
-        font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
 
-    /* Titres élégants */
-    h1,
-    h2,
-    h3,
-    .heading {
-        letter-spacing: -0.01em;
-        color: var(--ink);
-    }
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
 
-    h1 {
-        @apply text-4xl md:text-5xl;
-    }
+.container-clean {
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
 
-    h2 {
-        @apply text-3xl md:text-4xl;
-    }
-
-    h3 {
-        @apply text-2xl md:text-3xl;
-    }
-
-    a {
-        color: var(--accent);
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        text-decoration-color: color-mix(in oklab, var(--accent) 40%, transparent);
-        transition: color .2s ease, text-decoration-color .2s ease;
-    }
-
-    a:hover {
-        text-decoration-color: var(--accent);
-    }
-
-    ::selection {
-        background: color-mix(in oklab, var(--accent) 30%, transparent);
-        color: var(--ink);
+@media (min-width: 640px) {
+    .container-clean {
+        padding-inline: 1.5rem;
     }
 }
 
-/* ─────────────────────────────────────────
-   Utilitaires maison (réutilisables partout)
-────────────────────────────────────────── */
-@layer utilities {
-
-    /* Conteneur propre (si tu ne veux pas répéter 3 classes) */
-    .container-clean {
-        @apply container mx-auto max-w-5xl px-6;
+/* Scroll reveal: CSS only, content is always visible without support or with reduced motion */
+@keyframes reveal-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
     }
-
-    /* Glassmorphisme neutre (suit le thème) */
-    .glass {
-        background-color: rgb(var(--sand-rgb) / 0.55);
-        backdrop-filter: blur(18px);
-        border: 1px solid rgb(var(--ink-rgb) / 0.06);
-        box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
+    to {
+        opacity: 1;
+        transform: none;
     }
+}
 
-    /* Carte douce */
-    .card {
-        @apply rounded-2xl p-6;
-        background-color: var(--sand);
-        color: var(--ink);
-        box-shadow: var(--shadow-soft);
-        border: 1px solid color-mix(in oklab, var(--muted) 60%, transparent);
-    }
-
-    /* Bouton primaire & variante "ghost" */
-    .btn {
-        @apply inline-flex items-center justify-center rounded-2xl px-5 py-2.5 font-medium transition;
-        background: var(--primary);
-        color: white;
-        box-shadow: var(--shadow-soft);
-    }
-
-    .btn:hover {
-        box-shadow: var(--shadow-hover);
-    }
-
-    .btn-ghost {
-        @apply inline-flex items-center justify-center rounded-2xl px-5 py-2.5 font-medium transition;
-        background: rgb(var(--sand-rgb) / 0.6);
-        color: var(--ink);
-        border: 1px solid rgb(var(--ink-rgb) / 0.08);
-        backdrop-filter: blur(10px);
-    }
-
-    /* Badge / pill */
-    .badge {
-        @apply inline-flex items-center rounded-xl px-3 py-1 text-sm;
-        background: color-mix(in oklab, var(--accent) 16%, transparent);
-        color: var(--ink);
-        border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
-    }
-
-    /* Bordure dégradée subtile (utile sous la navbar) */
-    .border-glow {
-        position: relative;
-    }
-
-    .border-glow::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: linear-gradient(90deg,
-                color-mix(in oklab, var(--accent) 30%, transparent),
-                transparent 60%);
-        filter: blur(16px);
-        z-index: -1;
-    }
-
-    /* ─────────────────────────────────────────
-       Chrome / Metallic Accents
-    ────────────────────────────────────────── */
-    .text-chrome {
-        background: linear-gradient(to bottom,
-                #404040 0%,
-                #171717 50%,
-                #404040 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="dark"] .text-chrome {
-        background: linear-gradient(to bottom,
-                #ffffff 0%,
-                #a5a5a5 50%,
-                #ffffff 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-    }
-
-    .bg-chrome {
-        background: linear-gradient(135deg,
-                #e0e0e0 0%,
-                #ffffff 45%,
-                #a0a0a0 55%,
-                #e0e0e0 100%);
-        background-size: 200% 200%;
-        transition: background-position 0.5s ease;
-        color: #171717;
-        /* Dark text for contrast on chrome */
-        border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .bg-chrome:hover {
-        background-position: 100% 100%;
-    }
-
-    .border-chrome {
-        position: relative;
-        border: 1px solid transparent;
-        background:
-            linear-gradient(var(--sand), var(--sand)) padding-box,
-            linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #ffffff 100%) border-box;
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .reveal {
+            animation: reveal-in linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 40%;
+        }
     }
 }
