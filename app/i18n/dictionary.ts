@@ -9,7 +9,6 @@ export interface Dictionary {
         skills: string;
         contact: string;
         skipToContent: string;
-        switchLanguage: string;
         toggleTheme: string;
         menu: string;
         mainNavigation: string;
@@ -35,7 +34,6 @@ const en: Dictionary = {
         skills: "Skills",
         contact: "Contact",
         skipToContent: "Skip to content",
-        switchLanguage: "Passer en français",
         toggleTheme: "Toggle dark mode",
         menu: "Menu",
         mainNavigation: "Main navigation",
@@ -81,7 +79,6 @@ const fr: Dictionary = {
         skills: "Compétences",
         contact: "Contact",
         skipToContent: "Aller au contenu",
-        switchLanguage: "Switch to English",
         toggleTheme: "Basculer le mode sombre",
         menu: "Menu",
         mainNavigation: "Navigation principale",

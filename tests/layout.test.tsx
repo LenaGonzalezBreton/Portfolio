@@ -26,3 +26,11 @@ test("metadata is localized", async () => {
     expect(fr.description).not.toBe(en.description);
     expect(fr.alternates?.languages).toMatchObject({ fr: "/fr", en: "/en" });
 });
+
+test("skip link is the first element in body", async () => {
+    const html = await Layout({ children: null, params: Promise.resolve({ lang: "en" }) });
+    const body = (html.props.children as React.ReactElement[]).find((c) => c.type === "body")!;
+    const first = (body.props.children as React.ReactElement[])[0];
+    expect(first.type).toBe("a");
+    expect(first.props.href).toBe("#main");
+});
