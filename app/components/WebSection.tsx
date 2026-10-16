@@ -13,7 +13,7 @@ export default function WebSection({ dict }: { dict: Dictionary["web"] }) {
                     src="/web/dommartin.webp"
                     alt={dict.screenshotAlt}
                     width={1280}
-                    height={800}
+                    height={630}
                     sizes="(min-width: 1024px) 1024px, 100vw"
                     className="h-auto w-full"
                 />
