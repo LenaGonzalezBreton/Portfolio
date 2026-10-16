@@ -4,7 +4,12 @@ import path from "node:path";
 
 export default defineConfig({
     plugins: [react()],
-    resolve: { alias: { "@": path.resolve(__dirname, ".") } },
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "."),
+            "server-only": path.resolve(__dirname, "tests/server-only-stub.ts"),
+        },
+    },
     test: {
         environment: "jsdom",
         globals: true,
