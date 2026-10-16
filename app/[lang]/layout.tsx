@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { satoshi } from "@/app/fonts";
 import { getDictionary } from "@/app/i18n/dictionary";
 import { isLang, locales } from "@/app/locales";
+import { themeInitScript } from "@/app/theme-script";
 
 type Params = Promise<{ lang: string }>;
 
@@ -31,6 +32,9 @@ export default async function RootLayout({ children, params }: { children: React
 
     return (
         <html lang={lang} className={satoshi.variable} suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+            </head>
             <body>
                 <a
                     href="#main"
