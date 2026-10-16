@@ -1,75 +1,32 @@
-# Portfolio - Léna Gonzalez Breton
+# Portfolio — Léna Gonzalez Breton
 
-Bienvenue sur mon portfolio ! 👋
+Single-page, bilingual (FR/EN), light/dark portfolio. Routes: `/fr` and `/en` (`/` redirects from the browser language or the `lang` cookie).
 
-Ceci est mon espace personnel où je présente mes projets, mes compétences et mon parcours en tant que **Développeuse Fullstack & UI/UX Designer**.
+## Stack
 
-J'ai conçu ce site pour qu'il reflète ma vision du web : performant, esthétique et interactif. Il est construit avec les dernières technologies pour offrir une expérience fluide et moderne.
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, lucide-react. Tests: Vitest, Testing Library, vitest-axe.
 
-## 🛠️ Stack Technique
-
-Ce projet est un terrain de jeu pour explorer des technologies modernes :
-
--   **Framework** : [Next.js 16](https://nextjs.org/) (App Router)
--   **Langage** : [TypeScript](https://www.typescriptlang.org/)
--   **UI & Styling** : [Tailwind CSS v4](https://tailwindcss.com/) (Alpha/Beta)
--   **Animations** : [Framer Motion](https://www.framer.com/motion/)
--   **3D** : [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
--   **Icônes** : [Lucide React](https://lucide.dev/)
-
-## ✨ Fonctionnalités
-
--   **Design Moderne & Responsive** : Une interface "Bento grid" épurée qui s'adapte à tous les écrans.
--   **Thème Sombre / Clair** : Support natif du dark mode avec des transitions douces et des accents chromés.
--   **Internationalisation (i18n)** : Support complet Français 🇫🇷 / Anglais 🇬🇧.
--   **Animations Fluides** : Micro-interactions et transitions de page pour une expérience utilisateur engageante.
--   **Docker Ready** : Configuration optimisée pour un déploiement facile via Docker.
-
-## 🚀 Installation & Démarrage
-
-Pour lancer le projet localement :
-
-1.  **Cloner le dépôt :**
-
-    ```bash
-    git clone https://github.com/votre-username/portfolio.git
-    cd portfolio
-    ```
-
-2.  **Installer les dépendances :**
-
-    ```bash
-    npm install
-    # ou
-    yarn install
-    # ou
-    pnpm install
-    ```
-
-3.  **Lancer le serveur de développement :**
-
-    ```bash
-    npm run dev
-    ```
-
-    Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
-
-## 🐳 Docker
-
-Le projet inclut un `Dockerfile` optimisé pour la production (standalone mode).
+## Develop
 
 ```bash
-# Construire l'image
-docker build -t portfolio .
+npm install
+npm run dev     # http://localhost:3000
+npm test        # unit + accessibility tests
+npm run lint
+npm run build
+```
 
-# Lancer le conteneur
+## Content
+
+All copy lives in `app/i18n/dictionary.ts` and `app/data/*.ts` (FR and EN side by side). Colours and themes are tokens in `app/globals.css`.
+
+The CV buttons appear automatically once `public/cv/cv-fr.pdf` and `public/cv/cv-en.pdf` exist.
+
+## Docker
+
+```bash
+docker build -t portfolio .
 docker run -p 3000:3000 portfolio
 ```
 
-## 📬 Me Contacter
-
-Si vous avez un projet en tête ou si vous souhaitez simplement échanger, n'hésitez pas à me contacter via la section contact du site ou directement par email.
-
----
-
-*Fait avec le ❤️, un matcha et des cookies.*
+Design and plan: `docs/superpowers/`.

@@ -1,14 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 
-export default function ThemeToggle({ label }: { label: string }) {
-    const [dark, setDark] = useState(false);
+function subscribe(onChange: () => void) {
+    const observer = new MutationObserver(onChange);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+}
 
-    useEffect(() => {
-        setDark(document.documentElement.dataset.theme === "dark");
-    }, []);
+const isDark = () => document.documentElement.dataset.theme === "dark";
+
+export default function ThemeToggle({ label }: { label: string }) {
+    const dark = useSyncExternalStore(subscribe, isDark, () => false);
 
     function toggle() {
         const next = dark ? "light" : "dark";
@@ -18,7 +22,6 @@ export default function ThemeToggle({ label }: { label: string }) {
         } catch {
             /* storage unavailable: the choice just won't persist */
         }
-        setDark(next === "dark");
     }
 
     return (
