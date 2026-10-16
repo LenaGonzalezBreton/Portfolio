@@ -1,119 +1,70 @@
-import type { Project, Language } from "@/app/types";
+import type { Lang } from "@/app/locales";
 
-const projectsData: Record<Language, Project[]> = {
-    fr: [
-        {
-            title: "OPSY",
-            description: "Logiciel industriel de dépilement d'automate pour l'entreprise Eurosérum.",
-            tech: ["C#", "MAUI", "OPCDA", "SSMS"],
-            features: ["Lecture/Ecriture OPC", "Enregistrement en base de données", "Rapidité 1,2 seconde", "Multi-threading", "Gestion d'erreur et auto-diag"],
-            badge: "Privé",
-            status: "private",
-        },
-        {
-            title: "FluCast - Hackaton (48h)",
-            description: "Idéation de projet lors d'un Hackaton. Création d'un outil pour optimiser la gestion de la crise de la grippe.",
-            tech: ["Python/Streamlit", "Prophet"],
-            features: ["Cartes régionales et nationales", "Prévisions tension grippale s+1", "Data analyse", "Prophet entrainé sur plusieurs dataset", "Précision des résultats"],
-            repo: "https://github.com/LenaGonzalezBreton/FluCast",
-            live: "https://flucast.streamlit.app/",
-            badge: "Open-source",
-            status: "opensource",
-        },
-        {
-            title: "FitMe",
-            description: "Application sportive pour personne menstruée ou ménopausée.",
-            tech: ["React Native", "Expo", "TailwindCSS", "NestJS", "Firebase", "Docker"],
-            features: ["Suivi du cycle", "Proposition d'exercice en adéquation avec la phase du cycle", "UI motivante", "Système de streaks"],
-            repo: "https://github.com/LenaGonzalezBreton/FitMe",
-            badge: "WIP",
-            status: "wip",
-        },
-        {
-            title: "Tizzy",
-            description: "Product design, maquettage et début de réalisation d'une app mobile dédié à la revente de tickets dernière minute.",
-            tech: ["Figma", "Flutter", "Firebase"],
-            features: ["Authentification", "Visualitation des places", "Recherche et filtres", "Système de drop", "Profil"],
-            badge: "Privé",
-            status: "private",
-        },
-        {
-            title: "Copilote",
-            description: "Développement de l'ERP d'Eurosérum, notamment la partie maintenance.",
-            tech: ["Vb.net", "SSMS"],
-            features: ["Gestion des stocks", "Entrée manuelle d'article", "Filtres", "Lecture d'excel pour rentrée auto", "CRUD"],
-            badge: "Privé",
-            status: "private",
-        },
-        {
-            title: "Portfolio",
-            description: "Développement de mon portfolio",
-            tech: ["Next.js", "Typescript", "TailwindCSS", "Framer Motion", "Hébergement maison sur serveur"],
-            features: ["Listing de projets", "About me section", "Hero 3D", "Contact", "Experiences et formations"],
-            repo: "https://github.com/LenaGonzalezBreton/Portfolio",
-            badge: "Open-source",
-            status: "opensource",
-        },
-    ],
+export interface Project {
+    id: "opsy" | "fitme" | "copilote" | "tizzy";
+    name: string;
+    description: string;
+    tech: string[];
+    repo?: string;
+}
+
+const projects: Record<Lang, Project[]> = {
     en: [
         {
-            title: "OPSY",
-            description: "Industrial automation software for Eurosérum company.",
-            tech: ["C#", "MAUI", "OPCDA", "SSMS"],
-            features: ["OPC Read/Write", "Database recording", "1.2 second speed", "Multi-threading", "Error handling and auto-diagnosis"],
-            badge: "Private",
-            status: "private",
+            id: "opsy",
+            name: "OPSY",
+            description: "Industrial software that reads and writes PLC data over OPC, stores it in a database and self-diagnoses, in about 1.2 seconds.",
+            tech: ["C#", "MAUI", "OPC DA", "SQL Server"],
         },
         {
-            title: "FluCast - Hackathon (48h)",
-            description: "Project ideation during a Hackathon. Creation of a tool to optimize flu crisis management.",
-            tech: ["Python/Streamlit", "Prophet"],
-            features: ["Regional and national maps", "Flu tension forecasts s+1", "Data analysis", "Prophet trained on multiple datasets", "Result accuracy"],
-            repo: "https://github.com/LenaGonzalezBreton/FluCast",
-            live: "https://flucast.streamlit.app/",
-            badge: "Open-source",
-            status: "opensource",
-        },
-        {
-            title: "FitMe",
-            description: "Sports application for menstruating or menopausal people.",
-            tech: ["React Native", "Expo", "TailwindCSS", "NestJS", "Firebase", "Docker"],
-            features: ["Cycle tracking", "Exercise suggestions aligned with cycle phase", "Motivating UI", "Streak system"],
+            id: "fitme",
+            name: "FitMe",
+            description: "Sports app for people who menstruate or are menopausal: cycle tracking and workouts matched to each phase.",
+            tech: ["React Native", "Expo", "NestJS", "Firebase", "Docker"],
             repo: "https://github.com/LenaGonzalezBreton/FitMe",
-            badge: "WIP",
-            status: "wip",
         },
         {
-            title: "Tizzy",
-            description: "Product design, mockup and initial development of a mobile app dedicated to last-minute ticket resale.",
+            id: "copilote",
+            name: "Copilote",
+            description: "Maintenance module of the factory ERP: stock management, filters and automatic entry from Excel files.",
+            tech: ["VB.NET", "SQL Server"],
+        },
+        {
+            id: "tizzy",
+            name: "Tizzy",
+            description: "Product design and first build of a mobile app for last-minute ticket resale, from mockups to a working prototype.",
             tech: ["Figma", "Flutter", "Firebase"],
-            features: ["Authentication", "Seat visualization", "Search and filters", "Drop system", "Profile"],
-            badge: "Private",
-            status: "private",
+        },
+    ],
+    fr: [
+        {
+            id: "opsy",
+            name: "OPSY",
+            description: "Logiciel industriel qui lit et écrit les données d'automates via OPC, les enregistre en base et s'auto-diagnostique, en 1,2 seconde environ.",
+            tech: ["C#", "MAUI", "OPC DA", "SQL Server"],
         },
         {
-            title: "Copilote",
-            description: "Development of Eurosérum's ERP, particularly the maintenance section.",
-            tech: ["Vb.net", "SSMS"],
-            features: ["Stock management", "Manual item entry", "Filters", "Excel reading for auto-entry", "CRUD"],
-            badge: "Private",
-            status: "private",
+            id: "fitme",
+            name: "FitMe",
+            description: "Application sportive pour les personnes menstruées ou ménopausées : suivi du cycle et exercices adaptés à chaque phase.",
+            tech: ["React Native", "Expo", "NestJS", "Firebase", "Docker"],
+            repo: "https://github.com/LenaGonzalezBreton/FitMe",
         },
         {
-            title: "Portfolio",
-            description: "Development of my portfolio",
-            tech: ["Next.js", "Typescript", "TailwindCSS", "Framer Motion", "Self-hosted on server"],
-            features: ["Project listing", "About me section", "3D Hero", "Contact", "Experiences and education"],
-            repo: "https://github.com/LenaGonzalezBreton/Portfolio",
-            badge: "Open-source",
-            status: "opensource",
+            id: "copilote",
+            name: "Copilote",
+            description: "Module de maintenance de l'ERP de l'usine : gestion des stocks, filtres et saisie automatique depuis des fichiers Excel.",
+            tech: ["VB.NET", "SQL Server"],
+        },
+        {
+            id: "tizzy",
+            name: "Tizzy",
+            description: "Product design et première réalisation d'une application mobile de revente de billets de dernière minute, des maquettes au prototype.",
+            tech: ["Figma", "Flutter", "Firebase"],
         },
     ],
 };
 
-export function getProjects(language: Language = "en"): Project[] {
-    return projectsData[language];
+export function getProjects(lang: Lang): Project[] {
+    return projects[lang];
 }
-
-// For backward compatibility
-export const projects = projectsData.fr;
