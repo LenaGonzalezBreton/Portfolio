@@ -24,7 +24,22 @@ test("metadata is localized", async () => {
     const fr = await generateMetadata({ params: Promise.resolve({ lang: "fr" }) });
     const en = await generateMetadata({ params: Promise.resolve({ lang: "en" }) });
     expect(fr.description).not.toBe(en.description);
+});
+
+test("canonical and hreflang use SITE_URL when set", async () => {
+    vi.stubEnv("SITE_URL", "https://example.test");
+    const fr = await generateMetadata({ params: Promise.resolve({ lang: "fr" }) });
+    expect(String(fr.metadataBase)).toBe("https://example.test/");
     expect(fr.alternates?.languages).toMatchObject({ fr: "/fr", en: "/en" });
+    vi.unstubAllEnvs();
+});
+
+test("no canonical or hreflang is emitted without SITE_URL (never localhost)", async () => {
+    vi.stubEnv("SITE_URL", "");
+    const fr = await generateMetadata({ params: Promise.resolve({ lang: "fr" }) });
+    expect(fr.metadataBase).toBeUndefined();
+    expect(fr.alternates).toBeUndefined();
+    vi.unstubAllEnvs();
 });
 
 test("skip link is the first element in body", async () => {

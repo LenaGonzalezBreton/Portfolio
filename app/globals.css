@@ -36,6 +36,7 @@
 html {
     color-scheme: light;
     -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
 }
 
 html[data-theme="dark"] {

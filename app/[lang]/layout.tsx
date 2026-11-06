@@ -17,10 +17,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     const { lang } = await params;
     if (!isLang(lang)) return {};
     const { meta } = getDictionary(lang);
+    // Canonical/hreflang need an absolute base; without SITE_URL Next would fall back to localhost.
+    const siteUrl = process.env.SITE_URL;
     return {
         title: meta.title,
         description: meta.description,
-        alternates: { canonical: `/${lang}`, languages: { fr: "/fr", en: "/en" } },
+        ...(siteUrl && {
+            metadataBase: new URL(siteUrl),
+            alternates: { canonical: `/${lang}`, languages: { fr: "/fr", en: "/en", "x-default": "/en" } },
+        }),
         openGraph: { title: meta.title, description: meta.description, locale: lang, type: "website" },
     };
 }
