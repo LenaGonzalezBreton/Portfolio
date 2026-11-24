@@ -7,8 +7,9 @@
     --foreground: #1d1d1f;
     --muted-foreground: #6e6e73;
     --border: #86868b;
-    --accent: #0066cc;
+    --accent: #303033;
     --on-accent: #ffffff;
+    --focus-ring: #94651c;
 }
 
 /* Tokens — dark */
@@ -18,8 +19,9 @@
     --foreground: #f5f5f7;
     --muted-foreground: #a1a1a6;
     --border: #6e6e73;
-    --accent: #2997ff;
+    --accent: #dedee2;
     --on-accent: #000000;
+    --focus-ring: #d8b478;
 }
 
 @theme inline {
@@ -58,7 +60,7 @@ body {
 }
 
 :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 3px;
     border-radius: 4px;
 }

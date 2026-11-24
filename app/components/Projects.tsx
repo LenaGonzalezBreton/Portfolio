@@ -25,11 +25,22 @@ export default function Projects({ dict, projects }: { dict: Dictionary["project
                                 className="mt-6 inline-flex min-h-11 items-center font-medium text-accent underline-offset-4 hover:underline"
                             >
                                 {dict.repo}
-                                <span className="sr-only"> — {p.name}</span>
+                                <span className="sr-only"> ({p.name})</span>
                             </a>
                         )}
                     </article>
                 ))}
+            </div>
+            <div className="mt-12 border-t border-border/40 pt-8">
+                <h3 className="text-xl font-bold tracking-tight">{dict.experimentsTitle}</h3>
+                <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+                    {dict.experiments.map(({ name, description }) => (
+                        <div key={name}>
+                            <dt className="font-medium">{name}</dt>
+                            <dd className="mt-1 text-muted-foreground">{description}</dd>
+                        </div>
+                    ))}
+                </dl>
             </div>
         </Section>
     );

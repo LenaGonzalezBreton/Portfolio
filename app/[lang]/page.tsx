@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         <>
             <Navbar lang={lang} dict={dict.nav} name={site.name} />
             <main id="main">
-                <Hero lang={lang} dict={dict.hero} name={site.name} cvHref={cvHref(lang)} />
+                <Hero lang={lang} dict={dict.hero} cvHref={cvHref(lang)} />
                 <Projects dict={dict.projects} projects={getProjects(lang)} />
                 <WebSection dict={dict.web} />
                 <Experience dict={dict.experience} items={getExperience(lang)} lang={lang} />

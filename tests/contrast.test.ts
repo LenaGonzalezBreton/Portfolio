@@ -31,6 +31,8 @@ const pairs: [string, string, number][] = [
     ["muted-foreground", "surface", 4.5],
     ["on-accent", "accent", 4.5],
     ["accent", "background", 4.5],
+    ["focus-ring", "background", 3],
+    ["focus-ring", "surface", 3],
     ["border", "background", 3],
 ];
 

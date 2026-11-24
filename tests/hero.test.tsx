@@ -4,19 +4,20 @@ import Hero from "@/app/components/Hero";
 import { getDictionary } from "@/app/i18n/dictionary";
 
 function setup(cvHref?: string, lang: "fr" | "en" = "en") {
-    return render(<Hero lang={lang} dict={getDictionary(lang).hero} name="Léna Gonzalez Breton" cvHref={cvHref} />);
+    return render(<Hero lang={lang} dict={getDictionary(lang).hero} cvHref={cvHref} />);
 }
 
-test("h1 is the name and carries no job title", () => {
-    setup();
-    const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent("Léna Gonzalez Breton");
-    expect(h1.textContent).not.toMatch(/product owner|devops|développeuse/i);
+test.each([
+    ["fr", "Cloud & DevOps"],
+    ["en", "Cloud & DevOps"],
+] as const)("h1 shows the professional focus in %s", (lang, title) => {
+    setup(undefined, lang);
+    expect(screen.getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
 });
 
 test("pitch and availability render", () => {
     setup();
-    expect(screen.getByText(/I design and ship products/)).toBeInTheDocument();
+    expect(screen.getByText(/career in cloud and DevOps engineering/)).toBeInTheDocument();
     expect(screen.getByText(/permanent role from 2027/)).toBeInTheDocument();
 });
 

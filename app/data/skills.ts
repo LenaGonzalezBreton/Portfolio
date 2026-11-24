@@ -7,16 +7,16 @@ export interface SkillGroup {
 
 const groups: Record<Lang, SkillGroup[]> = {
     en: [
-        { label: "Product & design", items: ["Product discovery", "Backlog & prioritisation", "User stories", "Figma", "Prototyping"] },
-        { label: "DevOps", items: ["Docker", "GitLab CI/CD", "GitHub Actions", "Kubernetes (learning)", "Networking basics"] },
-        { label: "Development", items: ["TypeScript", "React / Next.js", "Flutter", "React Native", "Node.js / NestJS", "C# / .NET", "PHP / Laravel"] },
-        { label: "Data & tools", items: ["PostgreSQL / MySQL", "SQL Server", "MongoDB", "Git, GitHub, GitLab"] },
+        { label: "Systems & DevOps", items: ["Linux", "Docker", "Git", "GitHub Actions", "CI/CD", "DevSecOps", "Infrastructure as code"] },
+        { label: "Development & UX", items: ["C#", "PHP", "JavaScript", "TypeScript", ".NET", "Laravel", "Vue.js", "React", "Node.js", "Figma"] },
+        { label: "Databases", items: ["SQL", "MySQL", "PostgreSQL", "SQL Server"] },
+        { label: "Currently learning", items: ["AWS", "Kubernetes", "Terraform", "Ansible"] },
     ],
     fr: [
-        { label: "Produit & design", items: ["Product discovery", "Backlog & priorisation", "User stories", "Figma", "Prototypage"] },
-        { label: "DevOps", items: ["Docker", "GitLab CI/CD", "GitHub Actions", "Kubernetes (en cours)", "Bases réseau"] },
-        { label: "Développement", items: ["TypeScript", "React / Next.js", "Flutter", "React Native", "Node.js / NestJS", "C# / .NET", "PHP / Laravel"] },
-        { label: "Données & outils", items: ["PostgreSQL / MySQL", "SQL Server", "MongoDB", "Git, GitHub, GitLab"] },
+        { label: "Systèmes et DevOps", items: ["Linux", "Docker", "Git", "GitHub Actions", "CI/CD", "DevSecOps", "Infrastructure as code"] },
+        { label: "Développement et UX", items: ["C#", "PHP", "JavaScript", "TypeScript", ".NET", "Laravel", "Vue.js", "React", "Node.js", "Figma"] },
+        { label: "Bases de données", items: ["SQL", "MySQL", "PostgreSQL", "SQL Server"] },
+        { label: "En cours d’apprentissage", items: ["AWS", "Kubernetes", "Terraform", "Ansible"] },
     ],
 };
 

@@ -8,26 +8,34 @@ import { getSkillGroups } from "@/app/data/skills";
 
 test("experience items render in order with time elements", () => {
     const { container } = render(<Experience dict={getDictionary("en").experience} items={getExperience("en")} lang="en" />);
-    const orgs = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
-    expect(orgs[0]).toContain("Tizzy");
-    expect(orgs[1]).toContain("Eurosérum");
+    for (const [group, names] of [
+        ["Work experience", ["Vosgelis", "ARIA.bz", "Tizzy", "Eurosérum (Sodiaal Group)"]],
+        ["Education", ["Epitech", "Groupe Mont Roland"]],
+        ["Community involvement", ["SDIS 70", "Soror’IT"]],
+    ] as const) {
+        const region = screen.getByRole("region", { name: group });
+        expect(within(region).getAllByRole("heading", { level: 4 }).map((h) => h.textContent)).toEqual(names);
+    }
     expect(container.querySelectorAll("time").length).toBeGreaterThan(0);
-    expect(container.querySelector('time[datetime="2024-09"]')).not.toBeNull();
+    const tizzy = screen.getByRole("heading", { name: "Tizzy" }).closest("article")!;
+    expect(Array.from(tizzy.querySelectorAll("time"), (time) => time.dateTime)).toEqual(["2025-08", "2025-11"]);
 });
 
 test("ongoing item shows the localized present word", () => {
     for (const [lang, word] of [["en", "Present"], ["fr", "Aujourd'hui"]] as const) {
         const { unmount } = render(<Experience dict={getDictionary(lang).experience} items={getExperience(lang)} lang={lang} />);
-        const sdis = screen.getByRole("heading", { level: 3, name: /SDIS 70/ }).closest("article")!;
-        expect(within(sdis).getByText(new RegExp(word))).toBeInTheDocument();
+        const vosgelis = screen.getByRole("heading", { level: 4, name: "Vosgelis" }).closest("article")!;
+        expect(within(vosgelis).getByText(new RegExp(word))).toBeInTheDocument();
+        const past = screen.getByRole("region", { name: getDictionary(lang).experience.groups.community });
+        expect(within(past).queryByText(new RegExp(word))).not.toBeInTheDocument();
         unmount();
     }
 });
 
-test("entry without dates renders without a time element or crash", () => {
+test("Epitech displays the start and expected end dates", () => {
     render(<Experience dict={getDictionary("en").experience} items={getExperience("en")} lang="en" />);
-    const epitech = screen.getByRole("heading", { level: 3, name: /Epitech/ }).closest("article")!;
-    expect(epitech.querySelector("time")).toBeNull();
+    const epitech = screen.getByRole("heading", { level: 4, name: /Epitech/ }).closest("article")!;
+    expect(Array.from(epitech.querySelectorAll("time"), (time) => time.dateTime)).toEqual(["2024-09", "2027-09"]);
 });
 
 test("skills are grouped plain lists with no ratings", () => {

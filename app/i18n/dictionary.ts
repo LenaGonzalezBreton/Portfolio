@@ -1,4 +1,5 @@
 import type { Lang } from "@/app/locales";
+import type { ExperienceItem } from "@/app/data/experience";
 
 export interface Dictionary {
     meta: { title: string; description: string };
@@ -13,10 +14,10 @@ export interface Dictionary {
         menu: string;
         mainNavigation: string;
     };
-    hero: { pitch: string; availability: string; contact: string; downloadCv: string; photoAlt: string };
-    projects: { title: string; private: string; repo: string };
+    hero: { title: string; pitch: string; availability: string; contact: string; downloadCv: string; photoAlt: string };
+    projects: { title: string; private: string; repo: string; experimentsTitle: string; experiments: { name: string; description: string }[] };
     web: { title: string; intro: string; reference: string; visit: string; cta: string; screenshotAlt: string };
-    experience: { title: string; present: string };
+    experience: { title: string; present: string; until: string; groups: Record<ExperienceItem["group"], string> };
     skills: { title: string };
     contact: { title: string; intro: string; copy: string; copied: string; location: string; email: string };
     footer: { rights: string };
@@ -24,8 +25,8 @@ export interface Dictionary {
 
 const en: Dictionary = {
     meta: {
-        title: "Léna Gonzalez Breton — Portfolio",
-        description: "I design and ship products, from the need to production. Open to a permanent role from 2027; freelance websites in the meantime.",
+        title: "Cloud & DevOps | Léna Gonzalez Breton",
+        description: "Léna Gonzalez Breton is pursuing cloud and DevOps engineering, with an interest in systems architecture.",
     },
     nav: {
         projects: "Projects",
@@ -39,22 +40,35 @@ const en: Dictionary = {
         mainNavigation: "Main navigation",
     },
     hero: {
-        pitch: "I design and ship products, from the need to production.",
+        title: "Cloud & DevOps",
+        pitch: "Developer at Vosgelis. I’m working towards a career in cloud and DevOps engineering, with a long-term interest in systems architecture.",
         availability: "Available for a permanent role from 2027",
         contact: "Contact me",
         downloadCv: "Download CV",
         photoAlt: "Portrait of Léna Gonzalez Breton",
     },
-    projects: { title: "Projects", private: "Private project", repo: "View the repository" },
+    projects: {
+        title: "Projects",
+        private: "Private project",
+        repo: "View the repository",
+        experimentsTitle: "Cloud & infrastructure experiments",
+        experiments: [
+            { name: "AI-assisted content automation", description: "Designing a serverless, event-driven workflow on AWS for content creation and social media publishing." },
+            { name: "Homelab & self-hosting", description: "Experimenting with networking and self-hosted services on Raspberry Pi." },
+        ],
+    },
     web: {
         title: "Websites",
-        intro: "Showcase websites, or more — let's discuss your project.",
+        intro: "Freelance websites, from simple showcases to larger projects.",
         reference: "Recent work",
         visit: "Visit the site",
         cta: "Tell me about your project",
         screenshotAlt: "Home page of the Dommartin avec vous campaign website",
     },
-    experience: { title: "Experience", present: "Present" },
+    experience: {
+        title: "Background", present: "Present", until: "to",
+        groups: { work: "Work experience", education: "Education", community: "Community involvement" },
+    },
     skills: { title: "Skills" },
     contact: {
         title: "Contact",
@@ -69,8 +83,8 @@ const en: Dictionary = {
 
 const fr: Dictionary = {
     meta: {
-        title: "Léna Gonzalez Breton — Portfolio",
-        description: "Je conçois et je livre des produits, du besoin à la mise en production. Disponible en CDI à partir de 2027 ; sites web en freelance d'ici là.",
+        title: "Cloud & DevOps | Léna Gonzalez Breton",
+        description: "Léna Gonzalez Breton s’oriente vers l’ingénierie cloud et DevOps, avec un intérêt pour l’architecture des systèmes.",
     },
     nav: {
         projects: "Projets",
@@ -84,22 +98,35 @@ const fr: Dictionary = {
         mainNavigation: "Navigation principale",
     },
     hero: {
-        pitch: "Je conçois et je livre des produits, du besoin à la mise en production.",
+        title: "Cloud & DevOps",
+        pitch: "Développeuse chez Vosgelis, je m’oriente vers l’ingénierie cloud et DevOps, avec un intérêt pour l’architecture des systèmes.",
         availability: "Disponible en CDI à partir de 2027",
         contact: "Me contacter",
         downloadCv: "Télécharger le CV",
         photoAlt: "Portrait de Léna Gonzalez Breton",
     },
-    projects: { title: "Projets", private: "Projet privé", repo: "Voir le dépôt" },
+    projects: {
+        title: "Projets",
+        private: "Projet privé",
+        repo: "Voir le dépôt",
+        experimentsTitle: "Expérimentations cloud et infrastructure",
+        experiments: [
+            { name: "Automatisation de contenu assistée par IA", description: "Conception d’un workflow serverless et événementiel sur AWS pour la création de contenu et la publication sur les réseaux sociaux." },
+            { name: "Homelab et auto-hébergement", description: "Expérimentations réseau et services auto-hébergés sur Raspberry Pi." },
+        ],
+    },
     web: {
         title: "Sites web",
-        intro: "Sites vitrines, ou plus — parlons de votre projet.",
+        intro: "Sites vitrines en freelance. Projets plus complets sur demande.",
         reference: "Réalisation récente",
         visit: "Visiter le site",
         cta: "Parlez-moi de votre projet",
         screenshotAlt: "Page d'accueil du site de campagne Dommartin avec vous",
     },
-    experience: { title: "Parcours", present: "Aujourd'hui" },
+    experience: {
+        title: "Parcours", present: "Aujourd'hui", until: "à",
+        groups: { work: "Expériences professionnelles", education: "Formation", community: "Engagements" },
+    },
     skills: { title: "Compétences" },
     contact: {
         title: "Contact",

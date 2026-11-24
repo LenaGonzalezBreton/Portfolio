@@ -6,12 +6,10 @@ import Button from "@/app/components/ui/Button";
 export default function Hero({
     lang,
     dict,
-    name,
     cvHref,
 }: {
     lang: Lang;
     dict: Dictionary["hero"];
-    name: string;
     cvHref?: string;
 }) {
     return (
@@ -19,7 +17,7 @@ export default function Hero({
             <div className="container-clean grid items-center gap-12 md:grid-cols-[1.2fr_1fr]">
                 <div className="order-2 md:order-1">
                     <p className="mb-4 text-sm font-medium text-muted-foreground">{dict.availability}</p>
-                    <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">{name}</h1>
+                    <h1 className="text-4xl font-bold tracking-tight [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">{dict.title}</h1>
                     <p className="mt-6 max-w-xl text-xl text-muted-foreground md:text-2xl">{dict.pitch}</p>
                     <div className="mt-10 flex flex-wrap gap-3">
                         <Button href="#contact">{dict.contact}</Button>

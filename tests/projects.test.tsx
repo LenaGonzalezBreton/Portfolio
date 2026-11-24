@@ -10,7 +10,7 @@ const dict = getDictionary("en");
 test("renders the four projects in order", () => {
     render(<Projects dict={dict.projects} projects={getProjects("en")} />);
     const names = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
-    expect(names).toEqual(["OPSY", "FitMe", "Copilote", "Tizzy"]);
+    expect(names).toEqual(["OPSY", "FitMe", "Copilote", "Tizzy", dict.projects.experimentsTitle]);
     expect(screen.getAllByRole("article")).toHaveLength(4);
 });
 

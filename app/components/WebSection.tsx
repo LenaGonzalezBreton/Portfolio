@@ -18,7 +18,7 @@ export default function WebSection({ dict }: { dict: Dictionary["web"] }) {
                     className="h-auto w-full"
                 />
                 <figcaption className="flex flex-wrap items-center justify-between gap-2 p-6">
-                    <span className="text-sm text-muted-foreground">{dict.reference} — dommartinavecvous.fr</span>
+                    <span className="text-sm text-muted-foreground">{dict.reference} (dommartinavecvous.fr)</span>
                     <a
                         href={site.webReference}
                         rel="noopener noreferrer"
