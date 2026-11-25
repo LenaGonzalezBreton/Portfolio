@@ -16,10 +16,10 @@ export interface Dictionary {
     };
     hero: { title: string; pitch: string; availability: string; contact: string; downloadCv: string; photoAlt: string };
     projects: { title: string; private: string; repo: string; experimentsTitle: string; experiments: { name: string; description: string }[] };
-    web: { title: string; intro: string; reference: string; visit: string; cta: string; screenshotAlt: string };
-    experience: { title: string; present: string; until: string; groups: Record<ExperienceItem["group"], string> };
+    web: { title: string; intro: string; reference: string; contribution: string; visit: string; cta: string; screenshotAlt: string };
+    experience: { title: string; present: string; until: string; expectedEnd: string; groups: Record<ExperienceItem["group"], string> };
     skills: { title: string };
-    contact: { title: string; intro: string; copy: string; copied: string; location: string; email: string };
+    contact: { title: string; intro: string; copy: string; copied: string; copyFailed: string; location: string; email: string };
     footer: { rights: string };
 }
 
@@ -41,7 +41,7 @@ const en: Dictionary = {
     },
     hero: {
         title: "Cloud & DevOps",
-        pitch: "Developer at Vosgelis. I’m working towards a career in cloud and DevOps engineering, with a long-term interest in systems architecture.",
+        pitch: "Developer at Vosgelis, pursuing cloud and DevOps engineering.",
         availability: "Available for a permanent role from 2027",
         contact: "Contact me",
         downloadCv: "Download CV",
@@ -53,20 +53,21 @@ const en: Dictionary = {
         repo: "View the repository",
         experimentsTitle: "Cloud & infrastructure experiments",
         experiments: [
-            { name: "AI-assisted content automation", description: "Designing a serverless, event-driven workflow on AWS for content creation and social media publishing." },
-            { name: "Homelab & self-hosting", description: "Experimenting with networking and self-hosted services on Raspberry Pi." },
+            { name: "AI-assisted content automation", description: "In design: an event-driven AWS workflow for creating and publishing content." },
+            { name: "Homelab & self-hosting", description: "Ongoing experiments with networking and self-hosted services on Raspberry Pi." },
         ],
     },
     web: {
         title: "Websites",
         intro: "Freelance websites, from simple showcases to larger projects.",
-        reference: "Recent work",
+        reference: "Dommartin avec vous",
+        contribution: "I designed and built the entire site for Dommartin and updated it daily.",
         visit: "Visit the site",
         cta: "Tell me about your project",
         screenshotAlt: "Home page of the Dommartin avec vous campaign website",
     },
     experience: {
-        title: "Background", present: "Present", until: "to",
+        title: "Background", present: "Present", until: "to", expectedEnd: "expected",
         groups: { work: "Work experience", education: "Education", community: "Community involvement" },
     },
     skills: { title: "Skills" },
@@ -75,6 +76,7 @@ const en: Dictionary = {
         intro: "A role, a project, a question? Write to me.",
         copy: "Copy email address",
         copied: "Email address copied",
+        copyFailed: "Copy failed. Select the email address and copy it manually.",
         location: "Location",
         email: "Email",
     },
@@ -99,7 +101,7 @@ const fr: Dictionary = {
     },
     hero: {
         title: "Cloud & DevOps",
-        pitch: "Développeuse chez Vosgelis, je m’oriente vers l’ingénierie cloud et DevOps, avec un intérêt pour l’architecture des systèmes.",
+        pitch: "Développeuse chez Vosgelis, je m’oriente vers l’ingénierie cloud et DevOps.",
         availability: "Disponible en CDI à partir de 2027",
         contact: "Me contacter",
         downloadCv: "Télécharger le CV",
@@ -111,20 +113,21 @@ const fr: Dictionary = {
         repo: "Voir le dépôt",
         experimentsTitle: "Expérimentations cloud et infrastructure",
         experiments: [
-            { name: "Automatisation de contenu assistée par IA", description: "Conception d’un workflow serverless et événementiel sur AWS pour la création de contenu et la publication sur les réseaux sociaux." },
-            { name: "Homelab et auto-hébergement", description: "Expérimentations réseau et services auto-hébergés sur Raspberry Pi." },
+            { name: "Automatisation de contenu assistée par IA", description: "En conception : un workflow événementiel sur AWS pour créer et publier du contenu." },
+            { name: "Homelab et auto-hébergement", description: "Expérimentations en cours sur le réseau et l’auto-hébergement avec Raspberry Pi." },
         ],
     },
     web: {
         title: "Sites web",
         intro: "Sites vitrines en freelance. Projets plus complets sur demande.",
-        reference: "Réalisation récente",
+        reference: "Dommartin avec vous",
+        contribution: "J’ai conçu et développé l’intégralité du site pour Dommartin, puis je l’ai mis à jour au quotidien.",
         visit: "Visiter le site",
         cta: "Parlez-moi de votre projet",
         screenshotAlt: "Page d'accueil du site de campagne Dommartin avec vous",
     },
     experience: {
-        title: "Parcours", present: "Aujourd'hui", until: "à",
+        title: "Parcours", present: "Aujourd'hui", until: "à", expectedEnd: "fin prévue",
         groups: { work: "Expériences professionnelles", education: "Formation", community: "Engagements" },
     },
     skills: { title: "Compétences" },
@@ -133,6 +136,7 @@ const fr: Dictionary = {
         intro: "Un poste, un projet, une question ? Écrivez-moi.",
         copy: "Copier l'adresse e-mail",
         copied: "Adresse e-mail copiée",
+        copyFailed: "La copie a échoué. Sélectionnez l’adresse e-mail pour la copier manuellement.",
         location: "Localisation",
         email: "E-mail",
     },

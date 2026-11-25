@@ -28,6 +28,7 @@ test("copy button does not throw without the Clipboard API", () => {
     render(<Contact dict={dict.contact} />);
     expect(() => fireEvent.click(screen.getByRole("button", { name: dict.contact.copy }))).not.toThrow();
     expect(screen.getByRole("link", { name: site.email })).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(dict.contact.copyFailed);
 });
 
 test("social links have accessible names and safe rel", () => {

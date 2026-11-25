@@ -34,18 +34,19 @@ test("canonical and hreflang use SITE_URL when set", async () => {
     vi.unstubAllEnvs();
 });
 
-test("no canonical or hreflang is emitted without SITE_URL (never localhost)", async () => {
+test("canonical URLs default to the public domain without SITE_URL", async () => {
     vi.stubEnv("SITE_URL", "");
     const fr = await generateMetadata({ params: Promise.resolve({ lang: "fr" }) });
-    expect(fr.metadataBase).toBeUndefined();
-    expect(fr.alternates).toBeUndefined();
+    expect(String(fr.metadataBase)).toBe("https://www.lenagonzalezbreton.fr/");
+    expect(fr.alternates).toMatchObject({ canonical: "/fr", languages: { fr: "/fr", en: "/en" } });
     vi.unstubAllEnvs();
 });
 
 test("skip link is the first element in body", async () => {
     const html = await Layout({ children: null, params: Promise.resolve({ lang: "en" }) });
-    const body = (html.props.children as React.ReactElement[]).find((c) => c.type === "body")!;
-    const first = (body.props.children as React.ReactElement[])[0];
+    type Body = React.ReactElement<{ children: React.ReactElement<{ href?: string }>[] }>;
+    const body = (html.props.children as Body[]).find((c) => c.type === "body")!;
+    const first = body.props.children[0];
     expect(first.type).toBe("a");
     expect(first.props.href).toBe("#main");
 });

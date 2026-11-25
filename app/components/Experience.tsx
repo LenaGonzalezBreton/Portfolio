@@ -37,6 +37,7 @@ export default function Experience({
                                                 <p className="text-sm text-muted-foreground">
                                                     <Month value={item.start} lang={lang} /> {dict.until}{" "}
                                                     {item.end ? <Month value={item.end} lang={lang} /> : <span>{dict.present}</span>}
+                                                    {item.expectedEnd && ` (${dict.expectedEnd})`}
                                                 </p>
                                             )}
                                         </div>

@@ -3,7 +3,7 @@ import { site } from "@/app/data/site";
 import Section from "@/app/components/ui/Section";
 import CopyEmailButton from "@/app/components/CopyEmailButton";
 
-const linkClass = "inline-flex min-h-11 items-center font-medium text-accent underline-offset-4 hover:underline";
+const linkClass = "inline-flex min-h-11 items-center font-medium text-accent underline decoration-1 underline-offset-4 hover:decoration-2";
 
 export default function Contact({ dict }: { dict: Dictionary["contact"] }) {
     return (
@@ -13,7 +13,7 @@ export default function Contact({ dict }: { dict: Dictionary["contact"] }) {
                 <a href={`mailto:${site.email}`} className={`${linkClass} break-words text-xl [overflow-wrap:anywhere]`}>
                     {site.email}
                 </a>
-                <CopyEmailButton email={site.email} copyLabel={dict.copy} copiedLabel={dict.copied} />
+                <CopyEmailButton email={site.email} copyLabel={dict.copy} copiedLabel={dict.copied} failedLabel={dict.copyFailed} />
             </div>
             <ul className="mt-6 flex flex-wrap gap-x-6">
                 <li>

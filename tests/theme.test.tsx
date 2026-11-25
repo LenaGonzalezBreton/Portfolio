@@ -5,7 +5,16 @@ import { themeInitScript } from "@/app/theme-script";
 import ThemeToggle from "@/app/components/ThemeToggle";
 
 function mockSystem(dark: boolean) {
-    window.matchMedia = ((q: string) => ({ matches: dark && q.includes("dark"), media: q, addEventListener() {}, removeEventListener() {} })) as typeof window.matchMedia;
+    window.matchMedia = (query) => ({
+        matches: dark && query.includes("dark"),
+        media: query,
+        onchange: null,
+        addListener() {},
+        removeListener() {},
+        addEventListener() {},
+        removeEventListener() {},
+        dispatchEvent: () => true,
+    });
 }
 
 function runScript() {

@@ -5,6 +5,17 @@ import Section from "@/app/components/ui/Section";
 export default function Projects({ dict, projects }: { dict: Dictionary["projects"]; projects: Project[] }) {
     return (
         <Section id="projects" title={dict.title}>
+            <div className="mb-8 rounded-3xl bg-surface p-6 sm:p-8">
+                <h3 className="text-xl font-bold tracking-tight">{dict.experimentsTitle}</h3>
+                <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+                    {dict.experiments.map(({ name, description }) => (
+                        <div key={name}>
+                            <dt className="font-medium">{name}</dt>
+                            <dd className="mt-1 text-muted-foreground">{description}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
                 {projects.map((p) => (
                     <article key={p.id} className="flex flex-col rounded-3xl bg-surface p-6 sm:p-8">
@@ -22,7 +33,7 @@ export default function Projects({ dict, projects }: { dict: Dictionary["project
                             <a
                                 href={p.repo}
                                 rel="noopener noreferrer"
-                                className="mt-6 inline-flex min-h-11 items-center font-medium text-accent underline-offset-4 hover:underline"
+                                className="mt-6 inline-flex min-h-11 items-center font-medium text-accent underline decoration-1 underline-offset-4 hover:decoration-2"
                             >
                                 {dict.repo}
                                 <span className="sr-only"> ({p.name})</span>
@@ -30,17 +41,6 @@ export default function Projects({ dict, projects }: { dict: Dictionary["project
                         )}
                     </article>
                 ))}
-            </div>
-            <div className="mt-12 border-t border-border/40 pt-8">
-                <h3 className="text-xl font-bold tracking-tight">{dict.experimentsTitle}</h3>
-                <dl className="mt-4 grid gap-4 sm:grid-cols-2">
-                    {dict.experiments.map(({ name, description }) => (
-                        <div key={name}>
-                            <dt className="font-medium">{name}</dt>
-                            <dd className="mt-1 text-muted-foreground">{description}</dd>
-                        </div>
-                    ))}
-                </dl>
             </div>
         </Section>
     );

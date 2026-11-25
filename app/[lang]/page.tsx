@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     return (
         <>
             <Navbar lang={lang} dict={dict.nav} name={site.name} />
-            <main id="main">
+            <main id="main" tabIndex={-1}>
                 <Hero lang={lang} dict={dict.hero} cvHref={cvHref(lang)} />
                 <Projects dict={dict.projects} projects={getProjects(lang)} />
                 <WebSection dict={dict.web} />

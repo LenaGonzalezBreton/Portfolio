@@ -13,7 +13,7 @@ const projects: Record<Lang, Project[]> = {
         {
             id: "opsy",
             name: "OPSY",
-            description: "Industrial software that reads and writes PLC data over OPC, stores it in a database and self-diagnoses, in about 1.2 seconds.",
+            description: "Industrial software for collecting and storing data from production equipment.",
             tech: ["C#", "MAUI", "OPC DA", "SQL Server"],
         },
         {
@@ -40,7 +40,7 @@ const projects: Record<Lang, Project[]> = {
         {
             id: "opsy",
             name: "OPSY",
-            description: "Logiciel industriel qui lit et écrit les données d'automates via OPC, les enregistre en base et s'auto-diagnostique, en 1,2 seconde environ.",
+            description: "Logiciel industriel de collecte et de stockage des données d’équipements de production.",
             tech: ["C#", "MAUI", "OPC DA", "SQL Server"],
         },
         {

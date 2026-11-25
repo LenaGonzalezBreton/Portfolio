@@ -12,6 +12,7 @@ export interface ExperienceItem {
     start?: string;
     /** "YYYY-MM"; absent means ongoing */
     end?: string;
+    expectedEnd?: boolean;
     place?: string;
     bullets: string[];
 }
@@ -34,6 +35,7 @@ const items: Record<Lang, ExperienceItem[]> = {
             org: "Epitech",
             start: "2024-09",
             end: "2027-09",
+            expectedEnd: true,
             bullets: [
                 "Project-based learning through individual and team projects in cloud and DevOps.",
                 "ARTEM design thinking workshop on women in tech.",
@@ -71,7 +73,7 @@ const items: Record<Lang, ExperienceItem[]> = {
             group: "work",
             role: "Mobile developer & product apprentice",
             org: "Tizzy",
-            organizationSize: "Ticketing startup · three directors",
+            organizationSize: "Ticketing startup · three directors and two apprentices",
             start: "2025-08",
             end: "2025-11",
             place: "Nancy / Hybrid",
@@ -131,6 +133,7 @@ const items: Record<Lang, ExperienceItem[]> = {
             org: "Epitech",
             start: "2024-09",
             end: "2027-09",
+            expectedEnd: true,
             bullets: [
                 "Pédagogie par projet en cloud et DevOps, seule et en équipe.",
                 "Atelier ARTEM de design thinking sur la place des femmes dans la tech.",
@@ -168,7 +171,7 @@ const items: Record<Lang, ExperienceItem[]> = {
             group: "work",
             role: "Alternante développeuse mobile & produit",
             org: "Tizzy",
-            organizationSize: "Startup de billetterie · trois dirigeants",
+            organizationSize: "Startup de billetterie · trois dirigeants et deux alternantes",
             start: "2025-08",
             end: "2025-11",
             place: "Nancy / Hybride",

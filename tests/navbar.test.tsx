@@ -49,8 +49,11 @@ test("mobile menu button toggles aria-expanded and Escape closes it", async () =
     expect(button).toHaveAttribute("aria-expanded", "false");
     await userEvent.click(button);
     expect(button).toHaveAttribute("aria-expanded", "true");
+    await userEvent.tab();
+    expect(screen.getByRole("link", { name: "Projects" })).toHaveFocus();
     await userEvent.keyboard("{Escape}");
     expect(button).toHaveAttribute("aria-expanded", "false");
+    expect(button).toHaveFocus();
 });
 
 test("selecting a link closes the menu", async () => {

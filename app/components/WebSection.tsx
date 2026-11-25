@@ -18,11 +18,14 @@ export default function WebSection({ dict }: { dict: Dictionary["web"] }) {
                     className="h-auto w-full"
                 />
                 <figcaption className="flex flex-wrap items-center justify-between gap-2 p-6">
-                    <span className="text-sm text-muted-foreground">{dict.reference} (dommartinavecvous.fr)</span>
+                    <div className="max-w-xl">
+                        <p className="font-semibold">{dict.reference}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">{dict.contribution}</p>
+                    </div>
                     <a
                         href={site.webReference}
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-11 items-center font-medium text-accent underline-offset-4 hover:underline"
+                        className="inline-flex min-h-11 items-center font-medium text-accent underline decoration-1 underline-offset-4 hover:decoration-2"
                     >
                         {dict.visit}
                     </a>

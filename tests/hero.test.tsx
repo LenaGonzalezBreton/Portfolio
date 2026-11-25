@@ -17,7 +17,7 @@ test.each([
 
 test("pitch and availability render", () => {
     setup();
-    expect(screen.getByText(/career in cloud and DevOps engineering/)).toBeInTheDocument();
+    expect(screen.getByText(/pursuing cloud and DevOps engineering/)).toBeInTheDocument();
     expect(screen.getByText(/permanent role from 2027/)).toBeInTheDocument();
 });
 
